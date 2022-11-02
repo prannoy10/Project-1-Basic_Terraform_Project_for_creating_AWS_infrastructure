@@ -45,7 +45,7 @@ resource "aws_route_table" "prod-route-table" {   #name of RT
 resource "aws_subnet" "subnet-1" {
    vpc_id = aws_vpc.prod-vpc.id
    cidr_block = "10.0.1.0/24"
-   availability_zone = "ap-south-1"
+   availability_zone = "ap-south-1a"
    
    tags = {
       Name = "prod-subnet"
@@ -136,7 +136,7 @@ resource "aws_eip" "one" {
 resource "aws_instance" "web-server-ec2-instance" {
   ami           = "ami-062df10d14676e201"
   instance_type = "t2.micro"
-  availability_zone = "ap-south-1"  #recommend to hardcode it. else aws will randomly assign resources in different AZ. Like there
+  availability_zone = "ap-south-1a"  #recommend to hardcode it. else aws will randomly assign resources in different AZ. Like there
   #may be case where subnet was deployed in one AZ and interface and different AZ.
   #Now also mention key pair which we created and downloaded.
   key_name = "main-key"
