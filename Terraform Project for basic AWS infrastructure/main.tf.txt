@@ -1,7 +1,7 @@
 
 
 provider "aws" {
-  region = "ap-south-1"
+  region = "ap-south-1a"
   access_key = "AKIASN6CQ2LUPEHNFT4H"
   secret_key = "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" 
 }
@@ -151,7 +151,16 @@ tags = {
   } 
 #Now we are going to tell terraform, on deployment of the ec2 server, run few commands on server so we automatically install apache.
  #Now we can run all the commands after EOF below
- # user_data = <<EOF   
+user_data = <<EOF                                      #for rhel server
+                #!/bin/bash
+                yum update -y
+                yum install -y httpd.x86_64
+                systemctl start httpd.service
+                systemctl enable httpd.service
+                echo "Hello from Terraform deployed website!" > /var/www/html/index.html"
+                EOF
+                
+ # user_data = <<EOF                    #for ubuntu server
  #   #!/bin/bash
  #   sudo apt update -y 
  #   sudo apt install apache2 -y
