@@ -47,23 +47,19 @@ Terraform → AWS API → EC2 & Networking Resources
 - Terraform installed
 - AWS CLI configured
 
-bash
-Copy code
 aws configure
 terraform --version
 
 🚀 Deployment Steps
-bash
-Copy code
+
 git clone https://github.com/prannoy10/Project-1-Basic_Terraform_Project_for_creating_AWS_infrastructure.git
 cd Project-1-Basic_Terraform_Project_for_creating_AWS_infrastructure
 
 terraform init
 terraform plan
 terraform apply
+
 To destroy resources:
 terraform destroy
-
-bash
 Copy code
 terraform destroy
